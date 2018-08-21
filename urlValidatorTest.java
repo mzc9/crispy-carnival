@@ -27,8 +27,35 @@ public class MZurlValidatorTest extends TestCase {
 	}
 
 	public void testManualTest() {
-	//TODO
-		//  use this function to implement your manual testing
+	UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+
+         // Expected: valid     Result: invalid
+         System.out.println(urlVal.isValid("http://www.amazon.com:65535"));
+
+         // Expected: valid     Result: invalid
+         System.out.println(urlVal.isValid("http://www.amazon.com:6553"));
+
+         // Expected: valid     Result: invalid
+         System.out.println(urlVal.isValid("http://www.amazon.com:655"));
+
+        // Expected: valid     Result: invalid
+         System.out.println(urlVal.isValid("http://www.amazon.com:65"));
+
+         // Expected: valid     Result: invalid
+         System.out.println(urlVal.isValid("http://www.amazon.com:6"));
+         
+      //Expected: Invalid    Result: Valid
+        System.out.println(urlVal.isValid("http://2.2.2.255"));
+    
+    //Expected: Invalid    Result: Valid
+        System.out.println(urlVal.isValid("http://2.2.2.256"));
+    
+    //Expected: Invalid    Result: Valid
+      System.out.println(urlVal.isValid("http://2.2.2.895"));
+     
+    //Expected: Valid    Result: Valid
+      System.out.println(urlVal.isValid("http://www.amazon.com"));
+
 
 	}
 
